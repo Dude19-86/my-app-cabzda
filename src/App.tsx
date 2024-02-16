@@ -1,27 +1,25 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Rating} from "./Components/Rating/Rating";
 import {Accordion} from "./Components/Accordion/Accordion";
-import {PageTitle} from "./Components/AppTitle/PageTitle";
-import Input from "./Components/Input/Input";
+import {Rating} from "./Components/Rating/Rating";
+import {OnOff} from "./Components/onOff/OnOff";
 
 const App = () => {
-    const [state, SetState] = useState(true)
-   return (
+    return (
         <div>
-            <Input type={"text"}/>
-            <Input type={"date"}/>
+            <Accordion titleValue={"Menu"}/>
+            <Accordion titleValue={"Users"}/>
+            <Accordion titleValue={"Cuisine"}/>
 
-            <PageTitle title={"This is it Component"}/>
             <Rating value={0}/>
             <Rating value={1}/>
             <Rating value={2}/>
             <Rating value={3}/>
             <Rating value={4}/>
             <Rating value={5}/>
-            <Accordion collapsed={true} titleValue={"Menu"}/>
-            <Accordion collapsed={false} titleValue={"Users"}/>
-            <Accordion collapsed={false} titleValue={"Cuisine"}/>
+            <OnOff/>
+            <OnOff/>
+            <OnOff/>
         </div>
     );
 }
@@ -30,7 +28,7 @@ export default App;
 
 
 // export type RatingProps = {
-//     color?: string | "black"
+//     on?: string | "black"
 //     colorBgc?: string | "white"
 //     title?: string
 //     number?: number

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 type StarPropsType = {
     selected: boolean
@@ -6,11 +6,14 @@ type StarPropsType = {
     color?: string
 }
 export const Star = (props: StarPropsType) => {
+
+    const [state, setState] = useState(false)
+
     return (
-        <>
-            {props.selected ? <span style={{color: props.color}}><b>{props.title}</b> </span> :
-                <span style={{color: props.color}}>{props.title} </span>}
-        </>
+        <div onClick={() => {setState(!state)}} style={{display: 'inline-block', margin: '2px'}}>
+            {state ? <span style={{color: 'blue'}}><b>{props.title}</b> </span> :
+                <><span style={{color: 'green'}}>Flash</span></>}
+        </div>
 
     )
 }
