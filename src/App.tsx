@@ -4,6 +4,7 @@ import {Accordion} from "./Components/Accordion/Accordion";
 import {Rating} from "./Components/Rating/Rating";
 import {OnOff} from "./Components/onOff/OnOff";
 
+
 const App = () => {
     return (
         <div>
@@ -11,12 +12,12 @@ const App = () => {
             <Accordion titleValue={"Users"}/>
             <Accordion titleValue={"Cuisine"}/>
 
-            <Rating value={0}/>
-            <Rating value={1}/>
-            <Rating value={2}/>
-            <Rating value={3}/>
-            <Rating value={4}/>
-            <Rating value={5}/>
+            {/*<Rating value={0}/>*/}
+            {/*<Rating value={1}/>*/}
+            <Rating/>
+            {/*<Rating value={3}/>*/}
+            {/*<Rating value={4}/>*/}
+            {/*<Rating value={5}/>*/}
             <OnOff/>
             <OnOff/>
             <OnOff/>
