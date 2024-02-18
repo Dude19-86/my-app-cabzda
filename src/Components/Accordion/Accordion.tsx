@@ -14,8 +14,8 @@ export const Accordion = (props: AccordionPropsType) => {
     const [state, setState] = useState(false)
 
     return (
-        <div onClick={() => {setState(!state)}}>
-            <AccordionTitle title={props.titleValue}/><Button type={'primary'}><RollbackOutlined/></Button>
+        <div>
+            <AccordionTitle state={state} setState={setState} title={props.titleValue}/>
             {!state && <AccordionBody/>}
         </div>
     )
