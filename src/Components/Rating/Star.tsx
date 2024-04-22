@@ -1,23 +1,14 @@
-import React, {useState} from "react";
+import React from "react";
+import {RatingValueType} from "./Rating";
 
 type StarPropsType = {
     selected: boolean
-    title?: string
-    color?: string
+    value: RatingValueType
+    onClick: (value: RatingValueType) => void
 }
 export const Star = (props: StarPropsType) => {
-
-    // const [state, setState] = useState(false)
-
-    return (
-        // <div onClick={() => {setState(!state)}} style={{display: 'inline-block', margin: '2px'}}>
-        //     {state ? <span style={{color: 'blue'}}><b>{props.title}</b> </span> :
-        //         <><span style={{color: 'green'}}>Flash</span></>}
-        // </div>
-
-        <>
-            {props.selected ? <span><b>Star</b> </span> :
-                <span>Star</span>}
-        </>
-    )
+    console.log('Star rendering')
+    return <span onClick={() => props.onClick(props.value)}>
+        {props.selected ? <b>star </b> : 'star '}
+    </span>
 }

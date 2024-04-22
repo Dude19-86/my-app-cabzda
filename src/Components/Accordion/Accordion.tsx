@@ -1,13 +1,11 @@
 import React, {useState} from "react";
 import {AccordionTitle} from "./AccordionTitle";
 import {AccordionBody} from "./AccordionBody";
-import {Button, Popconfirm, Popover} from "antd";
-import {LikeFilled, RollbackOutlined} from "@ant-design/icons";
 
-type AccordionPropsType = {
-    titleValue: string
-    // collapsed: boolean
-    // onClick?: () => void
+export type AccordionPropsType = {
+    titleValue: string,
+    onChange: (value: boolean) => void
+    collapsed: boolean
 }
 export const Accordion = (props: AccordionPropsType) => {
 
@@ -15,8 +13,9 @@ export const Accordion = (props: AccordionPropsType) => {
 
     return (
         <div>
-            <AccordionTitle state={state} setState={setState} title={props.titleValue}/>
-            {!state && <AccordionBody/>}
+            <AccordionTitle onClick={() => {props.onChange(!props.collapsed)
+            }} title={props.titleValue}/>
+            {props.collapsed ? <AccordionBody/> : null}
         </div>
     )
 }

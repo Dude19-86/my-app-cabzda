@@ -1,41 +1,33 @@
 import React, {useState} from 'react';
 import './App.css';
+import {Rating, RatingPropsType, RatingValueType} from "./Components/Rating/Rating";
+import {UncontrolledRating} from './Components/UncontrolledRating';
 import {Accordion} from "./Components/Accordion/Accordion";
-import {Rating} from "./Components/Rating/Rating";
-import {OnOff} from "./Components/onOff/OnOff";
+import {OnOff} from './Components/onOff/OnOff';
+import {UnControlledOnOff} from "./Components/UnCountrolledOnOff/UnControlledOnOff";
 
 
 const App = () => {
+    let [ratingValue, setRatingValue] = useState<RatingValueType>(0);
+    let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
+    let [switchOn, setSwitchOn] = useState<boolean>(false)
+
     return (
         <div>
-            <Accordion titleValue={"Menu"}/>
-            <Accordion titleValue={"Users"}/>
-            <Accordion titleValue={"Cuisine"}/>
-
-            {/*<Rating value={0}/>*/}
-            {/*<Rating value={1}/>*/}
-            <Rating/>
-            {/*<Rating value={3}/>*/}
-            {/*<Rating value={4}/>*/}
-            {/*<Rating value={5}/>*/}
-            <OnOff/>
-            <OnOff/>
-            <OnOff/>
+            <Rating value={ratingValue} onClick={setRatingValue}/>
+            <UncontrolledRating/>
+            <Accordion
+                titleValue={'Menu'}
+                onChange={setAccordionCollapsed}
+                collapsed={accordionCollapsed}
+            />
+            {/*<OnOff on={switchOn} onChange={setSwitchOn}/>*/}
+            <UnControlledOnOff onChange={setSwitchOn}/>{switchOn.toString()}
         </div>
     );
 }
 
 export default App;
-
-
-// export type RatingProps = {
-//     on?: string | "black"
-//     colorBgc?: string | "white"
-//     title?: string
-//     number?: number
-//     selected?: boolean
-//     value?: number
-// }
 
 
 
