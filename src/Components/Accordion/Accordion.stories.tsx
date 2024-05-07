@@ -1,51 +1,80 @@
-import type {Meta, StoryObj} from '@storybook/react';
-import {action} from '@storybook/addon-actions'
-import { Accordion } from './Accordion';
+import {Accordion} from './Accordion';
 import React, {useState} from "react";
+import {action} from '@storybook/addon-actions';
 
- const meta: Meta<typeof Accordion> = {
+export default {
     component: Accordion,
-};
- export default meta;
-
-type Story = StoryObj<typeof Accordion>;
-export const FirstStory: Story = {
-    args: {
-        titleValue: 'Hello',
-        collapsed: true
-    }
-
 }
 
-const onChangeCallBack = action('onChange')
+const callback = action('accordion mode change event fired')
+const onClickCallback = action('some item was clicked')
 
-//     export const CollapsedAccordion = () => {
-//     return (
-//         // <Accordion
-//         //     titleValue={"Menu"}
-//         //     onChange={onChangeCallBack}
-//         //     collapsed={true}
-//         // />
-//     )
-// }
 
-// export const OpenAccordion= () => {
-//     return (
-//         <Accordion
-//             titleValue={"Menu"}
-//             onChange={() => {}}
-//             collapsed={true}
-//         />
-//     )
-// }
+export const MenuCollapsedMode = () => {
+    return (
+        <Accordion
+            titleValue={'MenuCollapsedMode'}
+            collapsed={true}
+            onChange={callback}
+            items={[]}
+            onClick={onClickCallback}/>
+    )
+}
 
-// export const MainAccordion= () => {
-//     const [state, setState] = useState(false)
-//     return (
-//         <Accordion
-//             titleValue={"Menu"}
-//             onChange={() => {}}
-//             collapsed={true}
-//         />
-//     )
-// }
+export const UserUnCollapsedMode = () => {
+    return (
+        <Accordion
+            titleValue={"UserUnCollapsedMode"}
+            collapsed={false}
+            onChange={callback}
+            items={[{title: 'Dimon', value: 1}, {title: 'Vasya', value: 2}, {title: 'Petya', value: 3}, {
+                title: 'Sasha',
+                value: 4
+            }, {title: 'Kolya', value: 5}, {title: 'Katya', value: 6}, {title: 'Dima', value: 7}, {
+                title: 'Dasha',
+                value: 8
+            }, {title: 'Kosta', value: 9}]}
+            onClick={onClickCallback}/>
+    )
+}
+
+export const ModeChanging = () => {
+    const [value, setValue] = useState(true)
+    return (
+        <Accordion
+            titleValue={"Users"}
+            collapsed={value}
+            onChange={() => {
+                setValue(!value)
+            }}
+            items={
+                [
+                    {title: 'Dimon', value: 1},
+                    {title: 'Vasya', value: 2},
+                    {title: 'Petya', value: 3},
+                    {title: 'Sasha', value: 4},
+                    {title: 'Kolya', value: 5},
+                    {title: 'Katya', value: 6},
+                    {title: 'Dima', value: 7},
+                    {title: 'Dasha', value: 8},
+                    {title: 'Kosta', value: 9},
+                    {title: 'Jack', value: 10},
+                    {title: 'Jill', value: 11},
+                    {title: 'Jim', value: 12},
+                    {title: 'Joe', value: 13},
+                    {title: 'Juan', value: 14},
+                    {title: 'Harry', value: 15},
+                    {title: 'Peter', value: 16},
+                    {title: 'James', value: 17},
+
+
+
+
+
+
+
+                ]
+            }
+            onClick={onClickCallback}/>
+    )
+}

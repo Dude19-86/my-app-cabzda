@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
 
 type OnOffType = {
-    // on: boolean
-    // onClick: () => void
     onChange: (on: boolean) => void
+    defaultOn?: boolean
 }
 
 export const UnControlledOnOff = (props: OnOffType) => {
 
-    const [state, setState] = useState(false)
+    const [state, setState] = useState(props.defaultOn ? props.defaultOn : false)
 
     const generalStyle = {
         display: 'flex', alignItems: 'center', gap: '10px',

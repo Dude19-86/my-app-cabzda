@@ -2,20 +2,25 @@ import React, {useState} from "react";
 import {AccordionTitle} from "./AccordionTitle";
 import {AccordionBody} from "./AccordionBody";
 
+export type ItemsType = {
+    title: string
+    value: any
+}
+
 export type AccordionPropsType = {
     titleValue: string,
-    onChange: (value: boolean) => void
     collapsed: boolean
+    onChange: (value: boolean) => void
+    items: ItemsType[]
+    onClick: (value: any) => void
 }
 export const Accordion = (props: AccordionPropsType) => {
-
-    const [state, setState] = useState(false)
 
     return (
         <div>
             <AccordionTitle onClick={() => {props.onChange(!props.collapsed)
             }} title={props.titleValue}/>
-            {props.collapsed ? <AccordionBody/> : null}
+            {!props.collapsed ? <AccordionBody items={props.items} onClick={props.onClick}/> : null}
         </div>
     )
 }
