@@ -4,8 +4,9 @@ import {Rating, RatingValueType} from "./Components/Rating/Rating";
 import {UnControlledRating} from './Components/UnControlledRating/UnControlledRating';
 import {Accordion} from "./Components/Accordion/Accordion";
 import {UnControlledOnOff} from "./Components/UnCountrolledOnOff/UnControlledOnOff";
-import { OnOff } from './Components/onOff/OnOff';
-import {Select} from "./Components/Select/Select";
+import {OnOff} from './Components/onOff/OnOff';
+import {UncontrolledAccordion} from "./Components/Accordion/UncontrolledAccordion";
+
 const App = () => {
     let [ratingValue, setRatingValue] = useState<RatingValueType>(0);
     let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
@@ -13,14 +14,21 @@ const App = () => {
 
     return (
         <div>
+            <UncontrolledAccordion titleValue={'Menu'}
+                                   collapsed={accordionCollapsed}
+                                   onChange={() => {}}
+                                   items={[{title: '1', value: 1}, {title: '2', value: 2}, {title: '3', value: 3}]}
+                                   onClick={() => {}}/>
             {/*<Select value={1} onClick={() => {}} items={[]}/>*/}
             <Rating value={ratingValue} onClick={setRatingValue}/>
-            <UnControlledRating onChange={()=> {}}/>
+            <UnControlledRating onChange={() => {
+            }}/>
             <Accordion
                 titleValue={'Menu'}
                 onChange={setAccordionCollapsed}
                 collapsed={accordionCollapsed}
-             items={[]} onClick={()=> {}}/>
+                items={[]} onClick={() => {
+            }}/>
             <OnOff on={switchOn} onChange={setSwitchOn}/>
             <UnControlledOnOff onChange={setSwitchOn}/>{switchOn.toString()}
         </div>
